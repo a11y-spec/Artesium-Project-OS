@@ -1,39 +1,23 @@
 Artesium
 ======
 
-Escape is a UNIX-like microkernel operating system on which I'm working since
-October 2008. It's implemented in C, C++ and a bit Assembler. I'm trying to
+Artesium is a UNIX-like microkernel operating system on which I'm working since
+October 2019. It's implemented in C, C++ and a bit Assembler. I'm trying to
 write all code myself to maximize the learning effect and the fun, but
 there are some cases where it just gets too time consuming to do that. Thus,
 I'm using the bootloader GRUB, libgcc, libsupc++ and x86emu.
-
-Escape runs on x86, x86_64, ECO32 and MMIX.
-[ECO32](http://homepages.thm.de/~hg53/eco32/) is a 32-bit big-endian RISC
-architecture, created by Hellwig Geisse at the University of Applied Sciences
-in Gießen for research and teaching purposes.
-MMIX is a 64-bit big-endian RISC architecture, developed by Donald Knuth as
-the successor of MIX, which is the abstract machine that is used in the famous
-bookseries The Art of Computer Programming. More precisely, Escape runs only
-on [GIMMIX](http://homepages.thm.de/~hg53/gimmix/), a simulator for MMIX
-developed by myself for my master thesis (the differences are minimal, but
-currently required for Escape).
-
-If you just want to take a quick look, you'll find
-[screenshots](https://github.com/Nils-TUD/Escape/wiki/Screenshots) and
-ready-to-use [images](https://github.com/Nils-TUD/Escape/wiki/Images) in
-the wiki.
 
 
 General structure
 -----------------
 
-Escape consists of a kernel, drivers, libraries and user applications. The
+Artesium consists of a kernel, drivers, libraries and user applications. The
 kernel is responsible for processes, threads, memory management, a virtual
 file system (VFS) and some other things. Drivers run in user space and work
 via message passing. They do not necessarily access the hardware and should
 therefore more seen as an instance that provides a service.
 
-The VFS is one of the central points of Escape. Besides the opportunity to
+The VFS is one of the central points of Artesium. Besides the opportunity to
 create files and folders in it, it is used to provide information about the
 state of the system for the user space (memory usage, CPU, running
 processes, ...). Most important, the VFS is used to communicate with devices,
@@ -86,7 +70,7 @@ it can't cause any harm to the rest of the system.
 Features
 --------
 
-Escape has currently the following features:
+Artesium has currently the following features:
 
 * **Kernel**
     * Memory management supporting copy-on-write, text sharing,
@@ -110,7 +94,7 @@ Escape has currently the following features:
   specifies it). That means, one can develop applications with the library when
   one doesn't need the more exotic stuff ;)
 * **libesc**  
-  Many abstractions specifically for Escape. Most important, it contains classes
+  Many abstractions specifically for Artesium. Most important, it contains classes
   to communicate with certain types of devices like the window managers, NICs,
   TCP/IP stacks and so on. Additionally, the library provides classes to
   implement devices.
@@ -118,11 +102,11 @@ Escape has currently the following features:
   The GUI library isn't finished yet, but does already provide things like
   basic controls, layout manager, image support (BMP and PNG), event system
   (keypresses, ...) and so on. It is written in C++, which was one of the main
-  reason to provide C++ support in Escape.
+  reason to provide C++ support in Artesium.
 * **libz**  
   Contains classes for deflate/inflate, gzip and CRC32.
 * **drivers**  
-  Escape has some architecture-specific drivers and some common drivers that
+  Artesium has some architecture-specific drivers and some common drivers that
   are architecture independent. Currently, there are:
     * common
         * ext2: a nearly complete ext2-rev0 fs
@@ -181,10 +165,10 @@ Escape has currently the following features:
         * video: the VGA driver
 * **user**  
   There are quite a few user programs so that you can actually do something with
-  Escape ;) The most important ones are:
+  Artesium ;) The most important ones are:
     * mount: creates a filesystem device and binds it to a path.
     * bind: binds an existing filesystem device to a different path.
-    * dynlink: the dynamic linker of Escape that is started by the kernel, if
+    * dynlink: the dynamic linker of Artesium that is started by the kernel, if
       the requested application is dynamically linked. It receives the fd for
       the executable, loads all dependencies, does the relocation and
       initialization and finally jumps to the application.
@@ -223,3 +207,8 @@ Getting started
 ---------------
 
 1. Will add.(later).
+
+
+Motivation?
+---------------
+Ans:If i say honestly i am only trying to make windows 95 fromscratch but not supporting exe.
