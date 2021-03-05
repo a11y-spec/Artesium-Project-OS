@@ -26,11 +26,11 @@ a node in the VFS over which it can be accessed. So, for example an
 `open("/dev/zero",...)` would open the device "zero". Afterwards one can use
 the received file descriptor to communicate with it.
 
-Basically, the communication works over messages. Escape provides the
-system calls `send` and `receive` for that purpose. Additionally, Escape defines
+Basically, the communication works over messages. Artesium provides the
+system calls `send` and `receive` for that purpose. Additionally, Artesium defines
 standard messages for `open`, `read`, `write` and `close`, which devices
 may support. For example, when using the `read` system call with a
-file descriptor for a device, Escape will send the read message to
+file descriptor for a device, Artesium will send the read message to
 the corresponding device and handle the communication for the user program.
 As soon as the answer is available, the result is passed back to the
 user program that called `read`.
@@ -45,12 +45,12 @@ filesystems, the kernel will handle the communication with the driver that
 has been registers as being responsible for this filesystem. This does not
 only serve for getting filesystems out of the kernel, but does also provide
 the possibility to use the filesystem interface whenever it fits. For example,
-Escape has a ftpfs that allows you to access a FTP server by mounting it
+Artesium has a ftpfs that allows you to access a FTP server by mounting it
 somewhere and a tarfs to access and/or change a tar file.
 
-Escape has also an interesting sandboxing mechanism, which causes no
+Artesium has also an interesting sandboxing mechanism, which causes no
 performance overhead, can be used by unprivileged users (non-root) and
-is nestable (sandboxed processes can create sandboxes). In general, Escape
+is nestable (sandboxed processes can create sandboxes). In general, Artesium
 does not allow to upgrade privileges, but only to downgrade them. To downgrade
 permissions, the sandbox application can be used. It allows to leave groups
 to restrict the access to drivers and services. And it allows to remount
